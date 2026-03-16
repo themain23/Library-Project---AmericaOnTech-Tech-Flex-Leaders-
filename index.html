@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Welcome to Shelf Care</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="index.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
+  </head>
+
+  <body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Shelf Care</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="recommendations.html">Recommendations</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--Start of main container section -->
+    <div class="main-container">
+      <div class="row">
+        <div class="col-md-12 header-content d-flex align-items-center justify-content-center flex-column">
+          <h1 class="animate__animated animate__fadeInDown">Welcome to your Library</h1>
+          <p class="animate__animated animate__fadeInDown">“Good friends, good books, and a sleepy conscience: this is the ideal life.” - Mark Twain</p>
+        </div>
+      </div>
+    </div>
+    <!--End of main container section -->
+    
+
+    <!--Start of second section that holds the add book form-->
+    <div class="second-container container-fluid">
+      <div class="row">
+        <div class="col-md-6 instruction-col bg-success rounded d-flex flex-column align-items-center justify-content-center animate__animated animate__fadeInUp">
+          <p>Do you love to read and want to keep track of your books? Then you have come to the right place!</p>
+          <p class="how-text">How to use the website:</p>
+          <ol>
+            <li>Fill out the form to the right.</li>
+            <li>Provide the title of the book, the name of the author, and number of pages.</li>
+            <li>Then hit the submit button</li>
+            <li>If you want to remove a book from your library, hit the 'Remove' button.</li>
+          </ol>
+        </div>
+
+        <!--This column is for the add book form: -->
+        <div class="col-md-6 book-form-col rounded animate__animated animate__fadeInUp animate__delay-2s">
+          <h2>Add your <span class="fav-text">favorite</span> new book</h2>
+
+          <form class ="form-group" id="book-form">
+            <div class="input-group mb-3">
+              <input type="text" id="title" name="title" placeholder="Title" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" id="author" name="author" placeholder="Author" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="number" id="page-count" name="pages" placeholder="Pages" min="1" class="form-control">
+            </div>
+
+            <button type="button" id="create-book-btn" onclick="createBook()">Submit</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    
+    <!--Start of Table section -->
+    <div class="container" id="table-container">
+      <div class="row">
+        <h1>My Books 📚</h1>
+        <div class="col-md-12 table-content" id="table-content">
+        
+          <table class="table" id="user-library-table">
+            <thead id="thead-table">
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Page Count</th>
+                <th scope="col">Book ID</th>
+                <th scope="col">Remove Book</th>
+              </tr>
+            </thead>
+          
+            <tbody id="table-Tbody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!--Start of update form section -->
+    <section class="update-form-container">
+      <div class="row">
+        <div class="col-md-6 img-col-2">
+          <h2>Need to update a book?</h2>
+          <h2>No worries.</h2>
+        </div>
+          
+        <div class="col-md-6 book-form-col rounded animate__animated animate__fadeInUp animate__delay-2s">
+          <h2>Fill out the form below to <span class="fav-text">update</span> your book!</h2>
+          <form class ="form-group" id="update-form">
+            <div class="input-group mb-3">
+              <input type="text" id="book-ID" placeholder="Book ID" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" id="new-title" placeholder="Title" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" id="new-author" placeholder="Author" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="number" id="new-page-count" placeholder="Pages" min="1" class="form-control">
+            </div>
+
+            <button type="button" id="update-book-btn" onclick="updateBook()">Update</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-dark text-white text-center p-4 mt-5">
+      <div class="container">
+        <p class="mb-1">© 2026 Shelf Care</p>
+        <p class="mb-0">
+          Shelf Care is a personal library management system designed to help book lovers
+          organize, update, and maintain their collections easily.
+        </p>
+      </div>
+    </footer>
+
+
+    <!-- DO NOT write any code below this comment -->
+  </body>
+</html>
